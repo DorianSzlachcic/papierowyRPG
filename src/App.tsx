@@ -1,35 +1,44 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import { useState } from "react";
+import LoginPage from "./components/LoginPage";
+import Alert from "./components/Alert";
 
 function App() {
-  const [count, setCount] = useState(0)
+  const [logged, setLogged] = useState(false);
+  const [alertVisible, setAlertVisible] = useState(false);
 
-  return (
-    <>
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
+  const handleSetLogged = (current: boolean) => {
+    setLogged(current);
+    setAlertVisible(true);
+  };
+
+  //check for session cookie and if we find it set propper account and logged to true
+  if (logged) {
+    return alertVisible ? (
+      <>
+        <Alert
+          text="Succesfully logged."
+          type="success"
+          onClose={() => setAlertVisible(false)}
+        />
+        <div>Page for logged customers</div>
+      </>
+    ) : (
+      <div>Page for logged customers</div>
+    );
+  } else {
+    return alertVisible ? (
+      <>
+        <Alert
+          text="Wrong credentials!"
+          type="danger"
+          onClose={() => setAlertVisible(false)}
+        />
+        <LoginPage handleSetLogged={handleSetLogged} />
+      </>
+    ) : (
+      <LoginPage handleSetLogged={handleSetLogged} />
+    );
+  }
 }
 
-export default App
+export default App;
