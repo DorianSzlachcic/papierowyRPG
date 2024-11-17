@@ -14,25 +14,29 @@ function LoginPage({ handleSetLogged }: Props) {
   };
 
   const handleSubmit = async (event: React.FormEvent) => {
-    event.preventDefault(); // Zapobiega przeładowaniu strony
+    event.preventDefault();
 
-    const loginData = {
-      username: username,
-      password,
-    };
+    const formData = new FormData();
+    formData.append("username", username);
+    formData.append("password", password);
 
     try {
-      const response = fetch("space for api url for checking user data", {
+      fetch("https://localhost:7016/api/users/login", {
         method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(loginData),
-      })
-        .then((res) => res.json())
-        .then((json) => {
-          //if()
-        });
+        body: formData,
+      }).then((res) => {
+        if (res.status == 200) {
+          res.json().then((json) => {
+            console.log(json);
+            //set username in cookies (placeholder for a token)
+            handleSetLogged(true);
+          });
+        } else {
+          console.log(res.status);
+          handleSetLogged(false);
+        }
+      });
+      //.then((json) => console.log(json["email"])); //console.log(res.status)); DON'T DELETE I MIGHT NEED IT
     } catch (error) {
       console.error("Błąd połączenia z API:", error);
     }
