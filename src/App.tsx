@@ -1,15 +1,17 @@
+import { useState } from "react";
 import LoginPage from "./components/LoginPage";
 
 function App() {
-  let items = ["New York", "San Francisco", "Tokyo", "London", "Paris"];
+  const [logged, setLogged] = useState(false);
 
-  const handleSelectItem = (item: string) => {
-    console.log(item);
+  const handleSetLogged = (current: boolean) => {
+    setLogged(current);
   };
-  if (false) {
-    return <div></div>; //for future
+  //check for session cookie and if we find it set propper account and logged to true
+  if (logged) {
+    return <div>happened</div>;
   } else {
-    return <LoginPage />;
+    return <LoginPage handleSetLogged={handleSetLogged} />;
   }
 }
 
