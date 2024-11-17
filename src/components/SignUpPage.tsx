@@ -1,50 +1,22 @@
 import React, { useState } from "react";
 
-interface Props {
-  handleSetLogged: (current: boolean) => void;
-}
-
-function LoginPage({ handleSetLogged }: Props) {
+function SignUpPage() {
   const [isChecked, setIsChecked] = useState(false);
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
+  const [email, setEmail] = useState("");
 
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setIsChecked(event.target.checked);
   };
 
-  const handleSubmit = async (event: React.FormEvent) => {
-    event.preventDefault(); // Zapobiega przeładowaniu strony
-
-    const loginData = {
-      username: username,
-      password,
-    };
-
-    try {
-      const response = fetch("space for api url for checking user data", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(loginData),
-      })
-        .then((res) => res.json())
-        .then((json) => {
-          //if()
-        });
-    } catch (error) {
-      console.error("Błąd połączenia z API:", error);
-    }
-  };
-
   return (
     <div>
       <div className="container min-vh-100 w-50 d-flex justify-content-center align-items-center">
-        <form onSubmit={handleSubmit}>
+        <form>
           <div className="card">
             <div className="text-center card-header">
-              <h2>Log in</h2>
+              <h2>Sign up</h2>
             </div>
             <div className="card-body">
               <div className="mb-3">
@@ -59,6 +31,20 @@ function LoginPage({ handleSetLogged }: Props) {
                   onChange={(e) => setUsername(e.target.value)}
                 />
               </div>
+
+              <div className="mb-3">
+                <label htmlFor="inputEmail" className="form-label">
+                  E-mail
+                </label>
+                <input
+                  type="text"
+                  className="form-control"
+                  id="inputEmail"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                />
+              </div>
+
               <div className="mb-3">
                 <label htmlFor="exampleInputPassword1" className="form-label">
                   Password
@@ -71,6 +57,7 @@ function LoginPage({ handleSetLogged }: Props) {
                   onChange={(e) => setPassword(e.target.value)}
                 />
               </div>
+
               <div className="mb-3 form-check">
                 <input
                   type="checkbox"
@@ -89,7 +76,7 @@ function LoginPage({ handleSetLogged }: Props) {
             </div>
             <div className="card-footer text-body-secondary">
               <p>
-                First timer? <a href="/signup">Sign up!</a>
+                You have an account? <a href="/index">Sign in!</a>
               </p>
             </div>
           </div>
@@ -99,4 +86,4 @@ function LoginPage({ handleSetLogged }: Props) {
   );
 }
 
-export default LoginPage;
+export default SignUpPage;
