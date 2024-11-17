@@ -28,7 +28,13 @@ function LoginPage({ handleSetLogged }: Props) {
         if (res.status == 200) {
           res.json().then((json) => {
             console.log(json);
-            //set username in cookies (placeholder for a token)
+            const setCookie = (name: string, value: string, days: number) => {
+              const expirationDate = new Date();
+              expirationDate.setDate(expirationDate.getDate() + days);
+
+              document.cookie = `${name}=${value}; expires=${expirationDate.toUTCString()}; path=/`;
+            };
+            setCookie("usernameForPapierowyRPG", json["username"], 1);
             handleSetLogged(true);
           });
         } else {

@@ -1,9 +1,19 @@
 import { useState } from "react";
 import LoginPage from "./components/LoginPage";
 import Alert from "./components/Alert";
+import MainPage from "./components/MainPage";
+
+const getCookie = (name: string) => {
+  const cookies = document.cookie
+    .split("; ")
+    .find((row) => row.startsWith(`${name}=`));
+
+  return cookies ? cookies.split("=")[1] : null;
+};
 
 function App() {
-  const [logged, setLogged] = useState(false);
+  const username = getCookie("usernameForPapierowyRPG");
+  const [logged, setLogged] = useState(username != null);
   const [alertVisible, setAlertVisible] = useState(false);
 
   const handleSetLogged = (current: boolean) => {
@@ -20,10 +30,10 @@ function App() {
           type="success"
           onClose={() => setAlertVisible(false)}
         />
-        <div>Page for logged customers</div>
+        <MainPage />
       </>
     ) : (
-      <div>Page for logged customers</div>
+      <MainPage />
     );
   } else {
     return alertVisible ? (

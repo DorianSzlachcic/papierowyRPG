@@ -1,5 +1,3 @@
-import React, { ReactNode, useState } from "react";
-
 interface Props {
   text: string;
   type:
