@@ -50,16 +50,35 @@ function LoginPage({ handleSetLogged }: Props) {
 
   return (
     <div>
-      <div className="container min-vh-100 w-50 d-flex justify-content-center align-items-center">
-        <form onSubmit={handleSubmit}>
-          <div className="card">
+      <style>
+        {`
+          .form-card {
+            transition: transform 0.6s ease-in-out, border-color 0.6s ease-in-out;
+          }
+
+          .form-card:hover {
+            transform: scale(1.05);
+            border-color: #007bff;
+          }
+      `}
+      </style>
+      <div className="container min-vh-100 d-flex justify-content-center align-items-center">
+        <div
+          className="card form-card shadow"
+          style={{
+            width: "29%",
+            border: "4px solid #ccc",
+            borderRadius: "15px",
+          }}
+        >
+          <form onSubmit={handleSubmit}>
             <div className="text-center card-header">
               <h2>Log in</h2>
             </div>
             <div className="card-body">
               <div className="mb-3">
                 <label htmlFor="inputUsername" className="form-label">
-                  Username
+                  Username:
                 </label>
                 <input
                   type="text"
@@ -71,7 +90,7 @@ function LoginPage({ handleSetLogged }: Props) {
               </div>
               <div className="mb-3">
                 <label htmlFor="exampleInputPassword1" className="form-label">
-                  Password
+                  Password:
                 </label>
                 <input
                   type={isChecked ? "text" : "password"}
@@ -98,12 +117,12 @@ function LoginPage({ handleSetLogged }: Props) {
               </button>
             </div>
             <div className="card-footer text-body-secondary">
-              <p>
-                First timer? <a href="/signup">Sign up!</a>
+              <p style={{ textAlign: "center" }}>
+                First time? <a href="/signup">Sign up!</a>
               </p>
             </div>
-          </div>
-        </form>
+          </form>
+        </div>
       </div>
     </div>
   );

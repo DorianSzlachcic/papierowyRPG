@@ -40,9 +40,28 @@ function SignUpPage({ handleAlert }: Props) {
 
   return (
     <div>
+      <style>
+        {`
+          .form-card {
+             transition: transform 0.6s ease-in-out, border-color 0.6s ease-in-out;
+          }
+
+          .form-card:hover {
+            transform: scale(1.05);
+            border-color: #007bff;
+          }
+        `}
+      </style>
       <div className="container min-vh-100 w-50 d-flex justify-content-center align-items-center">
-        <form onSubmit={handleSubmit}>
-          <div className="card">
+        <div
+          className="card form-card shadow"
+          style={{
+            width: "29%",
+            border: "4px solid #ccc",
+            borderRadius: "15px",
+          }}
+        >
+          <form onSubmit={handleSubmit}>
             <div className="text-center card-header">
               <h2>Sign up</h2>
             </div>
@@ -103,12 +122,12 @@ function SignUpPage({ handleAlert }: Props) {
               </button>
             </div>
             <div className="card-footer text-body-secondary">
-              <p>
+              <p style={{ textAlign: "center" }}>
                 You have an account? <a href="/index">Sign in!</a>
               </p>
             </div>
-          </div>
-        </form>
+          </form>
+        </div>
       </div>
     </div>
   );
