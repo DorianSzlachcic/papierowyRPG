@@ -1,14 +1,24 @@
 import { useState } from "react";
 import SignUpPage from "./components/SignUpPage";
+import Alert from "./components/Alert";
 
 function SignApp() {
-  const [logged, setLogged] = useState(false);
+  const [alertVisible, setAlertVisible] = useState(false);
 
-  const handleSetLogged = (current: boolean) => {
-    setLogged(current);
-  };
-
-  return <SignUpPage />;
+  return alertVisible ? (
+    <>
+      <Alert
+        text="Account created."
+        type="success"
+        onClose={() => setAlertVisible(false)}
+      />
+      <SignUpPage handleAlert={() => setAlertVisible(true)} />
+    </>
+  ) : (
+    <>
+      <SignUpPage handleAlert={() => setAlertVisible(true)} />
+    </>
+  );
 }
 
 export default SignApp;

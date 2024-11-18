@@ -1,6 +1,10 @@
 import React, { useState } from "react";
 
-function SignUpPage() {
+interface Props {
+  handleAlert: () => void;
+}
+
+function SignUpPage({ handleAlert }: Props) {
   const [isChecked, setIsChecked] = useState(false);
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
@@ -10,10 +14,34 @@ function SignUpPage() {
     setIsChecked(event.target.checked);
   };
 
+  const handleSubmit = async (event: React.FormEvent) => {
+    event.preventDefault();
+
+    const formData = new FormData();
+    formData.append("username", username);
+    formData.append("password", password);
+    formData.append("email", email);
+
+    try {
+      fetch("https://localhost:7016/api/users/register", {
+        method: "POST",
+        body: formData,
+      }).then((res) => {
+        if (res.status == 200) {
+          handleAlert();
+        } else {
+          console.log(res.status);
+        }
+      });
+    } catch (error) {
+      console.error("Błąd połączenia z API:", error);
+    }
+  };
+
   return (
     <div>
       <div className="container min-vh-100 w-50 d-flex justify-content-center align-items-center">
-        <form>
+        <form onSubmit={handleSubmit}>
           <div className="card">
             <div className="text-center card-header">
               <h2>Sign up</h2>
