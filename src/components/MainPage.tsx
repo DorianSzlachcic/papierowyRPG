@@ -10,7 +10,7 @@ function MainPage() {
         deleteCookie("usernameForPapierowyRPG");
       }}
     >
-      Delete username cookie
+      Log out
     </button>
   );
 }
