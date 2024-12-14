@@ -1,5 +1,6 @@
 import Notes from "./components/Notes";
 import History from "./components/History";
+import GameMaster from "./components/GameMaster";
 
 function GameApp() {
   return (
@@ -7,7 +8,8 @@ function GameApp() {
       <div className="col">
         <Notes />
       </div>
-      <div className="col">
+      <div className="col d-flex justify-content-center align-items-center flex-column">
+        <GameMaster />
         <History />
       </div>
       <div className="col"></div>
