@@ -25,7 +25,7 @@ function LoginPage({ handleSetLogged }: Props) {
         method: "POST",
         body: formData,
       }).then((res) => {
-        if (res.status == 200) {
+        if (res.status == 202) {
           res.json().then((json) => {
             console.log(json);
             const setCookie = (name: string, value: string, days: number) => {
