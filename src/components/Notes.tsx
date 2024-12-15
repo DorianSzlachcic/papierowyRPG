@@ -8,6 +8,7 @@ function Notes() {
     "Matołek raz zwiedzał zoo I wołał co chwila: O-o! Jaka brzydka papuga! Żyrafa jest za długa! Słoń za wysoki! A po co komu te foki? Zebra ma farbowane żebra!TygrysChętnie by mnie stąd wygryzł!Na, a zajrzyjmy pod daszek:Żółw - tuś, bratku, tuś!A to? Ptaszek.Niezły ptaszek -Struś!Wreszcie zbliża się do wielbłąda,Uważnie mu się przyglądaI powiada wskazując na niego przez kraty:Owszem, niezły. Niczego! Szkoda tylko, że garbaty!",
     "Co słychać, panie tygrysie? A nic. Nudzi mi się. Czy chciałby pan wyjść zza tych krat? Pewnie. Przynajmniej bym pana zjadł.",
     "Struś ze strachu Ciągle głowę chowa w piachu, Więc ma opinię mazgaja. A nadto znosi jaja wielkości strusiego jaja.",
+    "Posłał kozioł koziołeczka Po bułeczki do miasteczka.Koziołeczek ruszył w drogę,Wtem się natknął na stonogę.Zadrżał z trwogi, no i w nogi —Gaik, steczka, mostek, rzeczka,A tam czekał ojciec srogiI ukarał koziołeczka:— Taki tchórz! Taki tchórz!Ledwo wyszedł, wrócił już!Ładne rzeczy! Ładne rzeczy!A koziołek tylko beczy:— Jak nie uciec, ojcze drogi,Przecież sam rozumiesz to:Ja mam tylko cztery nogi,A stonoga ma ich sto!Posłał kozioł koziołeczkaPo ciasteczka do miasteczka.",
   ]);
   return (
     <>
