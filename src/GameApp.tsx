@@ -4,12 +4,21 @@ import GameMaster from "./components/GameMaster";
 import Skills from "./components/Skills";
 import Items from "./components/Items";
 import CharacterInfo from "./components/CharacterInfo";
+import Player from "./components/Player";
 
 function GameApp() {
   return (
     <div className="row vh-100">
       <div className="col">
-        <Notes />
+        <div className="">
+          <Notes />
+        </div>
+        <div className="">
+          <Player />
+        </div>
+        <div className="">
+          <CharacterInfo />
+        </div>
       </div>
       <div className="col d-flex justify-content-center align-items-center flex-column h-100">
         <GameMaster />
@@ -18,13 +27,10 @@ function GameApp() {
         </div>
       </div>
       <div className="col">
-        <div className="h-33">
-          <CharacterInfo />
-        </div>
-        <div className="h-33 overflow-scroll">
+        <div className="h-50">
           <Skills />
         </div>
-        <div className="h-33 overflow-scroll">
+        <div className="h-50">
           <Items />
         </div>
       </div>
