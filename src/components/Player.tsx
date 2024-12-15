@@ -4,7 +4,6 @@ import { useState } from "react";
 import { StatType } from "./GameList";
 import StatsList from "./StatsList";
 
-
 interface Character {
     id: number;
     name: string;
@@ -25,54 +24,29 @@ function Player() {
   const [player, updatePlayer] = useState();
   return (
     <>
-      <button
-        className="btn btn-primary"
-        type="button"
-        data-bs-toggle="offcanvas"
-        data-bs-target="#offcanvasWithBothOptions"
-        aria-controls="offcanvasWithBothOptions"
+      <div 
+        style={{ 
+          width: "100%", 
+          height: "100%", 
+          border: "2px solid #ccc", 
+          overflowY: "auto",
+          padding: "10px",
+          boxSizing: "border-box"
+        }}
       >
-        Player
-      </button>
-      <div
-        className="offcanvas offcanvas-start"
-        data-bs-scroll="true"
-        tabIndex={-1}
-        id="offcanvasWithBothOptions"
-        aria-labelledby="offcanvasWithBothOptionsLabel"
-      >
-        <div className="offcanvas-header">
-          <h2 className="offcanvas-title" id="offcanvasWithBothOptionsLabel">
-            Player
-          </h2>
-          <button
-            type="button"
-            className="btn-close"
-            data-bs-dismiss="offcanvas"
-            aria-label="Close"
-          ></button>
+        <div>
+          <h2>Player</h2>
         </div>
-        
-        <div className="ms-3">
-            <p className="fs-3">Name: {testCharacter.name}</p>
-            <label className="fs-4">Stats:</label>
-                <StatsList statsType="D&D"/>
-            <label className="fs-4">Description:</label>
-                <p className="m-3">{testCharacter.description}</p>
-            <label className="fs-4">Story:</label>
-                <p className="m-3">{testCharacter.story}</p>
-          </div>
 
-      </div>
-      <div
-        className="modal fade"
-        id="staticBackdrop"
-        data-bs-backdrop="static"
-        data-bs-keyboard="false"
-        tabIndex={-1}
-        aria-labelledby="staticBackdropLabel"
-        aria-hidden="true"
-      >
+        <div>
+          <p className="fs-3">Name: {testCharacter.name}</p>
+          <label className="fs-4">Stats:</label>
+          <StatsList statsType="D&D" />
+          <label className="fs-4">Description:</label>
+          <p>{testCharacter.description}</p>
+          <label className="fs-4">Story:</label>
+          <p>{testCharacter.story}</p>
+        </div>
       </div>
     </>
   );
