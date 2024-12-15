@@ -14,9 +14,9 @@ function GameListElement(props: { id: number, name: string, numberOfPlayers: num
                     <p>Rule set: {props.statsType}</p>
                 </div>
                 {props.status && (
-                    <button className="btn btn-primary ms-3 border border-dark bg-light-subtle text-dark" style={{ fontSize: "1.0rem" }}>
+                    <a href="/game" className="btn btn-primary ms-3 border border-dark bg-light-subtle text-dark" style={{ fontSize: "1.0rem" }}>
                         {"Join"}
-                    </button>
+                    </a>
                 )}
             </li>
         </>

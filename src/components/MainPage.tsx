@@ -9,10 +9,8 @@ function MainPage() {
 
   return (
     <>
-      {/*uncoment these lines to test components*/}
-      {/*<Player/>
       <GameList/>
-      <NewGameButton/>*/}
+      <NewGameButton/>
 
       <button
         className="btn btn-danger"
