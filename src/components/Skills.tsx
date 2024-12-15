@@ -17,13 +17,15 @@ function Skills({ handleSkillUpgrade }: Props) {
     { id: 3, name: "Alchemy", level: 5 },
   ]);
 
-  const handleUpgrade = (id: number) => {
+  {
+    /*const handleUpgrade = (id: number) => {
     const updatedSkills = skills.map((skill) =>
       skill.id === id ? { ...skill, level: skill.level + 1 } : skill
     );
     setSkills(updatedSkills);
     handleSkillUpgrade(id);
-  };
+  };*/
+  }
 
   return (
     <div className="card">
@@ -34,12 +36,12 @@ function Skills({ handleSkillUpgrade }: Props) {
             <span>
               {skill.name} (Level: {skill.level})
             </span>
-            <button
+            {/*<button
               className="btn btn-primary"
               onClick={() => handleUpgrade(skill.id)}
             >
               Upgrade
-            </button>
+            </button>*/}
           </li>
         ))}
       </ul>

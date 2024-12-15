@@ -31,12 +31,12 @@ function Items({ handleItemUse }: Props) {
             <span>
               {item.name}: {item.description}
             </span>
-            <button
+            {/*<button
               className="btn btn-secondary"
               onClick={() => handleUse(item.id)}
             >
               Use
-            </button>
+            </button>*/}
           </li>
         ))}
       </ul>
