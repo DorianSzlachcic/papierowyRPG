@@ -1,8 +1,5 @@
 import { useState } from "react";
 import "./styles.css";
-interface Props {
-  handleSkillUpgrade: (id: number) => void;
-}
 
 interface Skill {
   id: number;
@@ -10,7 +7,7 @@ interface Skill {
   level: number;
 }
 
-function Skills({ handleSkillUpgrade }: Props) {
+function Skills() {
   const [skills, setSkills] = useState<Skill[]>([
     { id: 1, name: "SwordFighting", level: 3 },
     { id: 2, name: "Archery", level: 2 },

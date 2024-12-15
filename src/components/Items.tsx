@@ -1,8 +1,5 @@
 import { useState } from "react";
 import "./styles.css";
-interface Props {
-  handleItemUse: (id: number) => void;
-}
 
 interface Item {
   id: number;
@@ -10,7 +7,7 @@ interface Item {
   description: string;
 }
 
-function Items({ handleItemUse }: Props) {
+function Items() {
   const [items, setItems] = useState<Item[]>([
     { id: 1, name: "Health Potion", description: "Restores 50 HP" },
     { id: 2, name: "Mana Potion", description: "Restores 30 MP" },
@@ -19,7 +16,6 @@ function Items({ handleItemUse }: Props) {
 
   const handleUse = (id: number) => {
     setItems(items.filter((item) => item.id !== id));
-    handleItemUse(id);
   };
 
   return (
