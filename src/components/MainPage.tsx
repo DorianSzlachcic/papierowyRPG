@@ -9,9 +9,11 @@ function MainPage() {
 
   return (
     <>
-      <Player/>
+      {/*uncoment these lines to test components*/}
+      {/*<Player/>
       <GameList/>
-      <NewGameButton/>
+      <NewGameButton/>*/}
+
       <button
         className="btn btn-danger"
         onClick={() => {
@@ -24,9 +26,10 @@ function MainPage() {
       >
         Log out
       </button>
+
+      <a href="/game">gra</a>
     </>
-    );
-  
+  );
 }
 
 export default MainPage;

@@ -27,7 +27,7 @@ function SignUpPage({ handleAlert }: Props) {
         method: "POST",
         body: formData,
       }).then((res) => {
-        if (res.status == 200) {
+        if (res.status == 201) {
           handleAlert();
         } else {
           console.log(res.status);
