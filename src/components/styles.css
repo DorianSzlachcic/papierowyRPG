@@ -72,4 +72,12 @@ body {
   .btn:hover {
     opacity: 0.9;
   }
+  .form-group {
+    margin-bottom: 15px;
+  }
   
+  .form-label {
+    font-weight: bold;
+  }
+  
+ 

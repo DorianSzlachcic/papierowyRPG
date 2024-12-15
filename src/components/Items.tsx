@@ -24,15 +24,21 @@ function Items() {
       <ul className="list-group">
         {items.map((item) => (
           <li key={item.id} className="list-group-item">
-            <span>
-              {item.name}: {item.description}
-            </span>
-            {/*<button
-              className="btn btn-secondary"
-              onClick={() => handleUse(item.id)}
-            >
-              Use
-            </button>*/}
+            <form className="item-form">
+              <div className="form-group">
+                <label className="form-label">
+                  <b>{item.name}</b>
+                </label>
+                <p className="form-description">{item.description}</p>
+              </div>
+              {/*<button
+                type="button"
+                className="btn btn-primary"
+                onClick={() => handleUse(item.id)}
+              >
+                Use
+              </button>*/}
+            </form>
           </li>
         ))}
       </ul>
