@@ -1,6 +1,19 @@
+import GameList from "./GameList";
+import NewGameButton from "./NewGameButton";
+import Player from "./Player";
+
 function MainPage() {
+
+  
+  
+
   return (
     <>
+      {/*uncoment these lines to test components*/}
+      {/*<Player/>
+      <GameList/>
+      <NewGameButton/>*/}
+
       <button
         className="btn btn-danger"
         onClick={() => {
@@ -13,6 +26,7 @@ function MainPage() {
       >
         Log out
       </button>
+
       <a href="/game">gra</a>
     </>
   );
