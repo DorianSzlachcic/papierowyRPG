@@ -16,28 +16,33 @@ function CharacterInfo() {
   ]);
 
   return (
-    <div className="card">
+    <div className="card" style={{ height: "400px" }}>
       <h2 className="card-header">Character Info</h2>
-      <ul className="list-group">
-        {characters.map((character) => (
-          <li key={character.id} className="list-group-item">
-            <form className="item-form">
-              <div className="form-group">
-                <label className="form-label">
-                  <b>Player Name</b>
-                </label>
-                <p className="form-description">{character.name}</p>
-              </div>
-              <div className="form-group">
-                <label className="form-label">
-                  <b>Health Points (HP)</b>
-                </label>
-                <p className="form-description">{character.hp}</p>
-              </div>
-            </form>
-          </li>
-        ))}
-      </ul>
+      <div
+        className="card-body"
+        style={{ maxHeight: "calc(100vh - 180px)", overflowY: "auto" }}
+      >
+        <ul className="list-group">
+          {characters.map((character) => (
+            <li key={character.id} className="list-group-item">
+              <form className="item-form">
+                <div className="form-group">
+                  <label className="form-label">
+                    <b>Player Name</b>
+                  </label>
+                  <p className="form-description">{character.name}</p>
+                </div>
+                <div className="form-group">
+                  <label className="form-label">
+                    <b>Health Points (HP)</b>
+                  </label>
+                  <p className="form-description">{character.hp}</p>
+                </div>
+              </form>
+            </li>
+          ))}
+        </ul>
+      </div>
     </div>
   );
 }
