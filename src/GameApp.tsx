@@ -9,7 +9,12 @@ function GameApp() {
   return (
     <div className="row vh-100">
       <div className="col">
-        <Notes />
+        <div className="h-50">
+          <Notes />
+        </div>
+        <div className="h-50 overflow-scroll">
+          <CharacterInfo />
+        </div>
       </div>
       <div className="col d-flex justify-content-center align-items-center flex-column h-100">
         <GameMaster />
@@ -18,13 +23,10 @@ function GameApp() {
         </div>
       </div>
       <div className="col">
-        <div className="h-33">
-          <CharacterInfo />
-        </div>
-        <div className="h-33 overflow-scroll">
+        <div className="h-50">
           <Skills />
         </div>
-        <div className="h-33 overflow-scroll">
+        <div className="h-50">
           <Items />
         </div>
       </div>
