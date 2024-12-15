@@ -3,6 +3,7 @@ import History from "./components/History";
 import GameMaster from "./components/GameMaster";
 import Skills from "./components/Skills";
 import Items from "./components/Items";
+import CharacterInfo from "./components/CharacterInfo";
 
 function GameApp() {
   return (
@@ -17,10 +18,13 @@ function GameApp() {
         </div>
       </div>
       <div className="col">
-        <div className="h-50">
+        <div className="h-33">
+          <CharacterInfo />
+        </div>
+        <div className="h-33 overflow-scroll">
           <Skills />
         </div>
-        <div className="h-50">
+        <div className="h-33 overflow-scroll">
           <Items />
         </div>
       </div>

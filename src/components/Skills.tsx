@@ -1,44 +1,69 @@
 import { useState } from "react";
 import "./styles.css";
 
+// Zdefiniujmy interfejs dla umiejętności
 interface Skill {
   id: number;
   name: string;
-  level: number;
+  description: string;
 }
 
 function Skills() {
-  const [skills, setSkills] = useState<Skill[]>([
-    { id: 1, name: "SwordFighting", level: 3 },
-    { id: 2, name: "Archery", level: 2 },
-    { id: 3, name: "Alchemy", level: 5 },
-  ]);
+  const gameMode: string = "Medieval"; // Fallout/Medieval
 
-  {
-    /*const handleUpgrade = (id: number) => {
-    const updatedSkills = skills.map((skill) =>
-      skill.id === id ? { ...skill, level: skill.level + 1 } : skill
-    );
-    setSkills(updatedSkills);
-    handleSkillUpgrade(id);
-  };*/
-  }
+  const falloutSkills: Skill[] = [
+    {
+      id: 1,
+      name: "Gun Combat",
+      description:
+        "Mastery of firearms, increases damage and accuracy with guns.",
+    },
+    {
+      id: 2,
+      name: "Survival",
+      description:
+        "Expertise in scavenging, increases resource gathering and crafting.",
+    },
+    {
+      id: 3,
+      name: "Science",
+      description:
+        "Knowledge of technology, increases hacking and crafting abilities.",
+    },
+  ];
+
+  const medievalSkills: Skill[] = [
+    {
+      id: 1,
+      name: "Sword Fighting",
+      description:
+        "Mastery of close combat with swords, improves damage and defense.",
+    },
+    {
+      id: 2,
+      name: "Archery",
+      description: "Skill with the bow, increases accuracy and range.",
+    },
+    {
+      id: 3,
+      name: "Alchemy",
+      description:
+        "Expert in creating potions and elixirs, enhances health and magic.",
+    },
+  ];
+
+  // Wybór umiejętności zależnie od trybu gry
+  const skills = gameMode === "Fallout" ? falloutSkills : medievalSkills;
 
   return (
     <div className="card">
       <h2 className="card-header">Skills</h2>
+      <p>Current Game Mode: {gameMode}</p>
       <ul className="list-group">
         {skills.map((skill) => (
           <li key={skill.id} className="list-group-item">
-            <span>
-              {skill.name} (Level: {skill.level})
-            </span>
-            {/*<button
-              className="btn btn-primary"
-              onClick={() => handleUpgrade(skill.id)}
-            >
-              Upgrade
-            </button>*/}
+            <h4>{skill.name}</h4>
+            <p>{skill.description}</p>
           </li>
         ))}
       </ul>
