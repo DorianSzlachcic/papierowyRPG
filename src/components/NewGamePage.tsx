@@ -85,7 +85,7 @@ function SignUpPage({ handleAlert }: Props) {
                   onChange={(e) => setRuleSet(e.target.value)}
                 >
                   <option value="D&D">D&D</option>
-                  <option value="S.P.E.S.I.A.L">S.P.E.S.I.A.L</option>
+                  <option value="S.P.E.C.I.A.L">S.P.E.C.I.A.L</option>
                   <option value="GURPS">GURPS</option>
                 </select>
               </div>

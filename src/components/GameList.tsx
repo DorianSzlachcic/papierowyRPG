@@ -1,45 +1,53 @@
 import React, { useState } from "react";
 import GameListElement from "./GameListElement";
 
+export type StatType = "D&D" | "S.P.E.C.I.A.L" | "GURPS";
+
 interface GameList {
     id: number;
     name: string;
     numberOfPlayers: number;
-    status: boolean
+    status: boolean;
+    statsType: StatType;
   }
   
-  const testData: GameList[] = [
-    {
-      id: 1,
-      name: "Ratowanie księżniczki",
-      numberOfPlayers: 4,
-      status: false,
-    },
-    {
-      id: 2,
-      name: "Dziecię Bala",
-      numberOfPlayers: 6,
-      status: true,
-    },
-    {
-      id: 3,
-      name: "Plaga w Neverwinter",
-      numberOfPlayers: 3,
-      status: true,
-    },
-    {
-      id: 4,
-      name: "Polowanie na Czarnego Smoka",
-      numberOfPlayers: 5,
-      status: false,
-    },
-    {
-      id: 5,
-      name: "Wampiry i Wilkołaki",
-      numberOfPlayers: 2,
-      status: true,
-    },
-  ];
+const testData: GameList[] = [
+  {
+    id: 1,
+    name: "Bloodlines in the Wastes",
+    numberOfPlayers: 4,
+    status: false,
+    statsType: "GURPS",
+  },
+  {
+    id: 2,
+    name: "Ascension of the Fallen",
+    numberOfPlayers: 6,
+    status: true,
+    statsType: "D&D",
+  },
+  {
+    id: 3,
+    name: "Echoes of the Plague",
+    numberOfPlayers: 3,
+    status: true,
+    statsType: "D&D",
+  },
+  {
+    id: 4,
+    name: "Frozen Blades, Burning Hearts",
+    numberOfPlayers: 5,
+    status: false,
+    statsType: "S.P.E.C.I.A.L",
+  },
+  {
+    id: 5,
+    name: "Moonlit Bloodlines",
+    numberOfPlayers: 2,
+    status: true,
+    statsType: "GURPS",
+  },
+];
 
 function GameList() {
     const [gameListData, setGameListaData] = useState();
@@ -61,7 +69,7 @@ function GameList() {
     return (
         <ol className="list-group list-group-numbered m-2">
             {testData.map((testData) => (
-                <GameListElement key={testData.id} id={testData.id} name={testData.name} numberOfPlayers={testData.numberOfPlayers} status={testData.status}/>
+                <GameListElement key={testData.id} id={testData.id} name={testData.name} numberOfPlayers={testData.numberOfPlayers} status={testData.status} statsType={testData.statsType}/>
             ))}
         </ol>
     )

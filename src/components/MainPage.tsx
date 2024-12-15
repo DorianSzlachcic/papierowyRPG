@@ -1,5 +1,6 @@
 import GameList from "./GameList";
 import NewGameButton from "./NewGameButton";
+import Player from "./Player";
 
 function MainPage() {
 
@@ -8,6 +9,7 @@ function MainPage() {
 
   return (
     <>
+      <Player/>
       <GameList/>
       <NewGameButton/>
       <button
