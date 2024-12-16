@@ -16,7 +16,7 @@ function CharacterInfo() {
   ]);
 
   return (
-    <div className="card" style={{ height: "400px" }}>
+    <div className="card" style={{ height: "250px" }}>
       <h2 className="card-header">Character Info</h2>
       <div
         className="card-body"

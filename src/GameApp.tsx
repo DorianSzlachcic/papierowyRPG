@@ -22,7 +22,7 @@ function GameApp() {
       </div>
       <div className="col d-flex justify-content-center align-items-center flex-column h-100">
         <GameMaster />
-        <div className="overflow-scroll">
+        <div className="overflow-y-scroll">
           <History />
         </div>
       </div>
