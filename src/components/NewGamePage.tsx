@@ -7,11 +7,8 @@ interface Props {
 function SignUpPage({ handleAlert }: Props) {
   const [name, setGameName] = useState("");
   const [ruleSet, setRuleSet] = useState("D&D");
-  const [players, setPlayers] = useState<string[]>([""]);
+  const [players, setPlayers] = useState(["", "", "", "",""]);
 
-  const handleAddPlayer = () => {
-    setPlayers([...players, ""]);
-  };
 
   const handlePlayerChange = (index: number, value: string) => {
     const updatedPlayers = [...players];
@@ -19,27 +16,40 @@ function SignUpPage({ handleAlert }: Props) {
     setPlayers(updatedPlayers);
   };
 
+  const getCookie = (name: string) => {
+    const cookies = document.cookie
+      .split("; ")
+      .find((row) => row.startsWith(`${name}=`));
+  
+    return cookies ? cookies.split("=")[1] : null;
+  };
+  const username = getCookie("usernameForPapierowyRPG") ?? "";
+
 
   const handleSubmit = async (event: React.FormEvent) => {
     event.preventDefault();
-
+  
     const formData = new FormData();
     formData.append("name", name);
-    formData.append("ruleSet", ruleSet);
-    formData.append("players", JSON.stringify(players));
-
+    formData.append("ruleset", ruleSet);
+    formData.append("player1", players[0]);
+    formData.append("player2", players[1]);
+    formData.append("player3", players[2]);
+    formData.append("player4", players[3]);
+    formData.append("gameMaster", username);
 
     try {
-      fetch("https://localhost:7016/api/games", {
+      const res = await fetch("https://localhost:7016/api/games/add", {
         method: "POST",
         body: formData,
-      }).then((res) => {
-        if (res.status == 200) {
-          handleAlert();
-        } else {
-          console.log(res.status);
-        }
       });
+      if (res.status === 200) {
+        handleAlert();
+      } else {
+        console.log(res.status);
+        const errorDetails = await res.text();
+        console.log("Error details:", errorDetails);
+      }
     } catch (error) {
       console.error("Błąd połączenia z API:", error);
     }
@@ -85,31 +95,51 @@ function SignUpPage({ handleAlert }: Props) {
                   onChange={(e) => setRuleSet(e.target.value)}
                 >
                   <option value="D&D">D&D</option>
-                  <option value="S.P.E.C.I.A.L">S.P.E.C.I.A.L</option>
+                  <option value="SPECIAL">SPECIAL</option>
                   <option value="GURPS">GURPS</option>
                 </select>
               </div>
 
               <div className="mb-3">
                 <label className="form-label">Players:</label>
-                {players.map((player, index) => (
-                  <div key={index} className="input-group mb-2">
+                <div>
+                  <div className="input-group mb-2">
                     <input
                       type="text"
                       className="form-control"
-                      placeholder={`Player ${index + 1} Name`}
-                      value={player}
-                      onChange={(e) => handlePlayerChange(index, e.target.value)}
+                      placeholder="Player 1 Name"
+                      value={players[0] || ""}
+                      onChange={(e) => handlePlayerChange(0, e.target.value)}
                     />
                   </div>
-                ))}
-                <button
-                  type="button"
-                  className="btn btn-secondary mt-2"
-                  onClick={handleAddPlayer}
-                >
-                  + Add Player
-                </button>
+                  <div className="input-group mb-2">
+                    <input
+                      type="text"
+                      className="form-control"
+                      placeholder="Player 2 Name"
+                      value={players[1] || ""}
+                      onChange={(e) => handlePlayerChange(1, e.target.value)}
+                    />
+                  </div>
+                  <div className="input-group mb-2">
+                    <input
+                      type="text"
+                      className="form-control"
+                      placeholder="Player 3 Name"
+                      value={players[2] || ""}
+                      onChange={(e) => handlePlayerChange(2, e.target.value)}
+                    />
+                  </div>
+                  <div className="input-group mb-2">
+                    <input
+                      type="text"
+                      className="form-control"
+                      placeholder="Player 4 Name"
+                      value={players[3] || ""}
+                      onChange={(e) => handlePlayerChange(3, e.target.value)}
+                    />
+                  </div>
+                </div>
               </div>
 
               <div className="flex flex-row">

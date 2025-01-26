@@ -1,10 +1,10 @@
 import React from "react";
 
-type StatType = "D&D" | "S.P.E.C.I.A.L" | "GURPS";
+type StatType = "D&D" | "SPECIAL" | "GURPS";
 
 const statTemplates: Record<StatType, string[]> = {
   "D&D": ["Strength", "Agility", "Constitution", "Intelligence", "Wisdom", "Charisma"],
-  "S.P.E.C.I.A.L": ["Strength", "Perception", "Endurance", "Charisma", "Intelligence", "Agility", "Luck"],
+  "SPECIAL": ["Strength", "Perception", "Endurance", "Charisma", "Intelligence", "Agility", "Luck"],
   "GURPS": ["Strength", "Agility", "Intelligence", "Health"],
 };
 

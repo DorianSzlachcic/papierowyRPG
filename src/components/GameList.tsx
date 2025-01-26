@@ -1,17 +1,17 @@
 import React, { useState } from "react";
 import GameListElement from "./GameListElement";
 
-export type StatType = "D&D" | "S.P.E.C.I.A.L" | "GURPS";
+export type StatType = "D&D" | "SPECIAL" | "GURPS";
 
 interface GameList {
     id: number;
     name: string;
-    numberOfPlayers: number;
-    status: boolean;
-    statsType: StatType;
+    playerAmount: number;
+    isActive: boolean;
+    ruleset: StatType;
   }
   
-const testData: GameList[] = [
+/*const testData: GameList[] = [
   {
     id: 1,
     name: "Bloodlines in the Wastes",
@@ -38,7 +38,7 @@ const testData: GameList[] = [
     name: "Frozen Blades, Burning Hearts",
     numberOfPlayers: 5,
     status: false,
-    statsType: "S.P.E.C.I.A.L",
+    statsType: "SPECIAL",
   },
   {
     id: 5,
@@ -47,32 +47,52 @@ const testData: GameList[] = [
     status: true,
     statsType: "GURPS",
   },
-];
+];*/
 
 function GameList() {
-    const [gameListData, setGameListaData] = useState();
+  const [gameListData, setGameListData] = useState<GameList[] | undefined>(undefined);
 
-    try {
-        fetch("https://localhost:7016/api/games", {
-            method: "GET",
-        }).then(async (res) => {
-            if(res.status == 200){
-                setGameListaData(await res.json()) 
-            } else {
-                console.log(res.status);
-            }
-        });
-    } catch (error) {
-        console.error("Błąd połączenia z API", error);
-    }
+  const getCookie = (name: string) => {
+    const cookies = document.cookie
+      .split("; ")
+      .find((row) => row.startsWith(`${name}=`));
+  
+    return cookies ? cookies.split("=")[1] : null;
+  };
 
-    return (
-        <ol className="list-group list-group-numbered m-2">
-            {testData.map((testData) => (
-                <GameListElement key={testData.id} id={testData.id} name={testData.name} numberOfPlayers={testData.numberOfPlayers} status={testData.status} statsType={testData.statsType}/>
-            ))}
-        </ol>
-    )
+  const formData = new FormData();
+  const username = getCookie("usernameForPapierowyRPG") ?? "";
+  formData.append("username", username);
+
+  try {
+      fetch("https://localhost:7016/api/games", {
+          method: "GET",
+      }).then(async (res) => {
+          if(res.status == 200){
+              setGameListData(await res.json()) 
+          } else {
+              console.log(res.status);
+          }
+      });
+  } catch (error) {
+      console.error("Błąd połączenia z API", error);
+  }
+
+  return (
+      <ol className="list-group list-group-numbered m-2">
+        {(gameListData ?? []).map((testData) => (
+          <GameListElement 
+              key={testData.id} 
+              id={testData.id} 
+              name={testData.name} 
+              numberOfPlayers={testData.playerAmount} 
+              status={testData.isActive} 
+              statsType={testData.ruleset} 
+          />
+      ))}
+
+      </ol>
+  )
 }
 
 export default GameList;
