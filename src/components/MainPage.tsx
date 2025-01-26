@@ -3,10 +3,6 @@ import NewGameButton from "./NewGameButton";
 import Player from "./Player";
 
 function MainPage() {
-
-  
-  
-
   return (
     <>
       <GameList/>

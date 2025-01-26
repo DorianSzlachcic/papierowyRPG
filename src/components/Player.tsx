@@ -14,9 +14,9 @@ interface Character {
 
 const testCharacter: Character = {
     id: 0,
-    name: "Kael the Brave",
-    description: "A seasoned warrior clad in battered armor, Kael wields a massive sword with unmatched skill. Fierce and determined, he carries the scars of countless battles",
-    story: "Born in a small mountain village, Kael trained relentlessly to protect his home from raiders. After his village fell, he now roams the land, seeking redemption and a new purpose in the chaos of war.",
+    name: "",
+    description: "",
+    story: "",
     statsType: "D&D"
 }
 
@@ -40,12 +40,25 @@ function Player() {
 
         <div>
           <p className="fs-3">Name: {testCharacter.name}</p>
+          <button className="btn btn-primary" type="button">Edit Name</button>
+
+          <br/>
+          <br/>
           <label className="fs-4">Stats:</label>
           <StatsList statsType="D&D" />
+          <button className="btn btn-primary" type="button">Edit Stats</button>
+
+          <br/>
+          <br/>
           <label className="fs-4">Description:</label>
           <p>{testCharacter.description}</p>
+          <button className="btn btn-primary" type="button">Edit Description</button>
+
+          <br/>
+          <br/>
           <label className="fs-4">Story:</label>
           <p>{testCharacter.story}</p>
+          <button className="btn btn-primary" type="button">Edit Story</button>
         </div>
       </div>
     </>
